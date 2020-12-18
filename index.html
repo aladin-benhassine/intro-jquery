@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container text-center mt-3">
+        <div class="w-50 p-5 principale">
+            <h1 class="titre">BON ANNIVERSAIRE !</h1>
+            <div class="row mt-5">
+                <div class="col-3"></div>
+                <div class="col-6 msg1">Je te souhaites longue vie</div>
+                <div class="col-3"></div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-3"></div>
+                <div class="col-6 msg2">Santé et Amour</div>
+                <div class="col-3"></div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-3"></div>
+                <div class="col-6 msg3">Et beaucoup d'argent</div>
+                <div class="col-3"></div>
+            </div>
+
+            <img data-aos="flip-right" data-aos-duration=3000 src="hb.jpg" class="bg" alt="">
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-3"></div>
+        <div class="col-6 stop">Stopper la musique</div>
+        <div class="col-3"></div>
+    </div>
+</body>
+</html>
+
+
+<script>
+    AOS.init();
+  </script>
+<script>
+	$(function(){
+   	$('.principale').ready(function(){
+    $(".msg1").hide();
+    $(".msg2").hide();
+    $(".msg3").hide();
+    $(".stop").hide();
+    $(".bg").hide();
+   	});
+	});
+    </script>
+
+<script>
+	$(function(){
+   	$('.titre').click(function(){
+    $(".msg1").show();
+   	});
+	});
+    </script>
+    
+    <script>
+        $(function(){
+           $('.msg1').click(function(){
+        $(".msg2").show();
+           });
+        });
+        </script>
+
+<script>
+    $(function(){
+       $('.msg2').click(function(){
+    $(".msg3").show();
+       });
+    });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', 'zik.mp3');
+    
+    $('.msg3').click(function() {
+        audioElement.play();
+        $(".stop").show();
+        $(".bg").animate({
+          width   : "400px",
+          opacity : 1
+        }, 5000, apresAnimer);
+        function apresAnimer() {
+        $(".bg").css("width", "400px");
+        $(".bg").animate({
+          opacity : 1
+          }, 0);
+      }
+      $(".principale").css("background-image", "linear-gradient(to top, #fddb92 0%, #d1fdff 100%)");
+      $(".titre").css("color", "black");
+      $(".msg1").css("color", "black");
+      $(".msg2").css("color", "black");
+      $(".msg3").css("color", "black");
+      $(".msg1").css("border-color", "black");
+      $(".msg2").css("border-color", "black");
+      $(".msg3").css("border-color", "black");
+        $("#status").text("Status: Playing");
+    });
+
+    $('.stop').click(function() {
+        audioElement.pause();
+        $("#status").text("Status: Paused");
+    });
+    
+});
+    </script>
